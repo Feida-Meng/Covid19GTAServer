@@ -1,0 +1,11 @@
+{
+  "name": "covid19server",
+  "version": "1.0.0",
+  "description": "server for api.covid19.com",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Feida Meng",
+  "license": "ISC"
+}
