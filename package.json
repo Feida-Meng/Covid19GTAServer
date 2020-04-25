@@ -4,7 +4,8 @@
   "description": "server for api.covid19.com",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "start:prod": "NODE_ENV=production node server.js"
   },
   "author": "Feida Meng",
   "license": "ISC",
