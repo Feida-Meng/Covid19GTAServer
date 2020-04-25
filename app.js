@@ -1,4 +1,6 @@
 const express = require('express');
+const cors = require('cors');
+const covid19Router = require('./router/covid19Router');
 
 // const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -13,7 +15,6 @@ const limiter = rateLimit({
 	max: 100 // limit each IP to 100 requests per windowMs
 });
 //security packages
-
 const app = express();
 
 app.use(limiter);
@@ -22,5 +23,8 @@ app.use(helmet());
 app.use(hpp());
 app.use(compression());
 
+app.use(cors({ origin: process.env.NODE_ENV === 'production' ? 'https://covid19gta.com' : 'http://localhost:9000' }));
+//routing
+app.use('/api/v1/covid19', covid19Router);
 
 module.exports = app;
