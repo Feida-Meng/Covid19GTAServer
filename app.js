@@ -1,4 +1,5 @@
 const express = require('express');
+const covid19Router = require('./router/covid19Router');
 
 // const bodyParser = require('body-parser');
 const compression = require('compression');
@@ -22,5 +23,7 @@ app.use(helmet());
 app.use(hpp());
 app.use(compression());
 
+//routing
+app.use('/api/v1/covid19', covid19Router);
 
 module.exports = app;
