@@ -13,3 +13,4 @@ COPY . .
 EXPOSE 8000
 # Define the command that should be executed
 CMD [ "npm", "run", "start:prod" ]
+
