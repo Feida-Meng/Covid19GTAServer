@@ -1,6 +1,7 @@
 
 const dotenv = require('dotenv');
-dotenv.config({ path: './config_dev.env' });
+
+dotenv.config({ path: process.env.NODE_ENV === 'production' ? './config_prod.env' : './config_dev.env' });
 
 const app = require('./app');
 const mongoose = require('mongoose');
@@ -14,11 +15,9 @@ mongoose
 })
 .catch(e => console.log('mongoose server connected error!!', e));
 
-
-
-const port = process.env.Port || 3333;
+const port = process.env.PORT || 3333;
 
 const server = app.listen(port, () => {
-	console.log(`server listening on ${port}`);
+	console.log(`${process.env.NODE_ENV} server listening on ${port}`);
 });
 
