@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+- 'node'
+services:
+- docker
+jobs:
+  include:
+  - stage: docker-deploy-image
+    script:
+    - echo "$DOCKER_PASS" | docker login -u "$DOCKER_USER" --password-stdin
+    - docker build -t fmengo/covid19gta-server .
+    - docker push fmengo/covid19gta-server
+  - stage: deploy
+    script: skip
+    deploy:
+      provider: elasticbeanstalk
+      access_key_id: $AWS_ACCESS_KEY_ID
+      secret_access_key: $AWS_SECRET_ACCESS_KEY
+      region: 'ca-central-1'
+      app: 'Covid19GTAServer'
+      env: 'Covid19gtaserver-env'
+      bucket_name: 'elasticbeanstalk-ca-central-1-173109358409'
+      bucket_path: 'Covid19GTAServer'
