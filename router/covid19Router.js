@@ -5,7 +5,7 @@ const { getLatestCases, getAllCases, getCasesByCityAndDate } = require('../contr
 
 router.route('/history').get(getAllCases);
 
-router.route('/get-cases-by-city-date').get(getCasesByCityAndDate);
+router.route('/getcasesbycitydate').get(getCasesByCityAndDate);
 
 router.route('/').get(getLatestCases);
 
