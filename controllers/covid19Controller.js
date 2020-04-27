@@ -5,10 +5,10 @@ exports.getLatestCases = async (req, res) => {
 	try {
 		const newDate = new Date();
 
-		const startDate = new Date(newDate.getFullYear(),newDate.getMonth(),newDate.getDate());
-		startDate.setHours(0,0,0,0);
+		// const startDate = new Date(newDate.getFullYear(),newDate.getMonth(),newDate.getDate());
+		// startDate.setHours(0,0,0,0);
 
-		const results = await Covid19.find({ createdAt: {$gte: startDate } }).sort({ cases: -1 });
+		const results = await Covid19.find({ }).sort({ createdAt: -1, cases: -1 }).limit(25);
 
 		res.status(200).json({
 			status: 'success',
