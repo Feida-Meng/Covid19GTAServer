@@ -14,7 +14,8 @@ exports.getLatestCases = async (req, res) => {
 			status: 'success',
 			results: results.length,
 			data: {
-				data: results
+				data: results,
+				date: new Date()
 			}
 		});
 	} catch (e) {
