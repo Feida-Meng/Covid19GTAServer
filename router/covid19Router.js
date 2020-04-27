@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-const { getLatestCases, getAllCases } = require('../controllers/covid19Controller');
-
+const { getLatestCases, getAllCases, getCasesByCityAndDate } = require('../controllers/covid19Controller');
 
 router.route('/history').get(getAllCases);
 
 router.route('/').get(getLatestCases);
 
+router.route('/get-cases-by-city-date').get(getCasesByCityAndDate);
 
 module.exports = router;
